@@ -9,6 +9,7 @@ public class River {
         int c = Integer.parseInt(scan.nextLine()); //Reading the first line containing the number of test cases
         String test = "";
         String values [] = new String[3];
+        int arrival = 0;
         int n = 0;
         int t = 0;
         int m = 0;
@@ -21,8 +22,10 @@ public class River {
             t = Integer.parseInt(values[1]);
             m = Integer.parseInt(values[2]);
             for (int j = 0; j < m; j++) {
-
+                arrival = Integer.parseInt(scan.nextLine());
+                //cars.algo(arrival);
             }
+            //cars.clear();
         }
     }
 }
