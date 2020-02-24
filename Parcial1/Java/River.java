@@ -32,4 +32,12 @@ public class River {
             System.out.println(cars.get(i));
         }
     }
+
+    public static String solution(int n, int t, int m, LinkedList<Integer> cars) {
+        String sol = "";
+        int time = 0;
+        int trips = 0;
+        //Write solution here
+        return sol;
+    }
 }
