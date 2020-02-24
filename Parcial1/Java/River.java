@@ -23,9 +23,13 @@ public class River {
             m = Integer.parseInt(values[2]);
             for (int j = 0; j < m; j++) {
                 arrival = Integer.parseInt(scan.nextLine());
-                //cars.algo(arrival);
+                cars.push(arrival); //Guardo al fondo de la cola en orden de llegada
             }
             //cars.clear();
+        }
+        //ficti
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(cars.get(i));
         }
     }
 }
