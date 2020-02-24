@@ -26,7 +26,7 @@ public class River {
             m = Integer.parseInt(values[2]); //Parsing m input to integer
             for (int j = 0; j < m; j++) { //Loop for putting cars in a queue ordered depending on the arrival to terminal
                 arrival = Integer.parseInt(scan.nextLine()); //Reading and parsing each car inputed
-                cars.push(arrival); //Saving cars arriving in a queue
+                cars.addLast(arrival); //Saving cars arriving in a queue
             }
             System.out.println(solution(n, t, m, cars)); //Printing the solution for a test case
             cars.clear(); //Clearing the queue for next test
