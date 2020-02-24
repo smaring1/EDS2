@@ -23,13 +23,10 @@ public class River {
             m = Integer.parseInt(values[2]);
             for (int j = 0; j < m; j++) {
                 arrival = Integer.parseInt(scan.nextLine());
-                cars.push(arrival); //Guardo al fondo de la cola en orden de llegada
+                cars.push(arrival); //Saving cars arriving in a queue
             }
-            //cars.clear();
-        }
-        //ficti
-        for (int i = 0; i < cars.size(); i++) {
-            System.out.println(cars.get(i));
+            System.out.println(solution(n, t, m, cars));
+            cars.clear();
         }
     }
 
