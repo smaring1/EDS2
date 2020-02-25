@@ -40,7 +40,9 @@ public class River {
         if (m % n != 0) { //I ceil because if my minimum trip quantity is non integer, I can't do decimal trips. I add one.
             minTrips++;
         }
+        for (int i = 0; i < cars.size(); i++) { //Loop for going through the car list and...
 
+        }
         return sol;
     }
 }
