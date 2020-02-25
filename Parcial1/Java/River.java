@@ -35,14 +35,24 @@ public class River {
 
     public static String solution(int n, int t, int m, LinkedList<Integer> cars) {
         String sol = "";
+        int totalTime = 0;
+        int totalTrips = 0;
         //Write solution here
         int minTrips = m/n; //It is the minimum quantity of trips you will do
         if (m % n != 0) { //I ceil because if my minimum trip quantity is non integer, I can't do decimal trips. I add one.
             minTrips++;
         }
-        for (int i = 0; i < cars.size(); i++) { //Loop for going through the car list and... //TODO: completar esto
-            //TODO: crear ifs para satisfacer la condición
+        for (int i = 0; i < minTrips; i++) { //Loop for going through the car list and... //TODO: completar esto
+            if (cars.size() == 0) {
+                totalTime = 0;
+                totalTrips = 0;
+            } else if (cars.size() == 1) {
+                totalTime = cars.getFirst() + t;
+            } else {
+                //Criterio
+            }
         }
+        sol = totalTime + " " + totalTrips;
         return sol;
     }
 }
