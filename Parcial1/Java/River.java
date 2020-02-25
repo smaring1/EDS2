@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+
 import java.util.Scanner;
 
 /**
@@ -7,8 +7,8 @@ import java.util.Scanner;
  */
 public class River {
     public static void main(String[] args) {
-        LinkedList<Integer> cars = new LinkedList<>();
         Scanner scan = new Scanner(System.in); //Creating the scanner
+        int cars [] = new int[1440]; //Creating an array which size will be maximum the limit of the problem
         int c = Integer.parseInt(scan.nextLine()); //Reading the first line containing the number of test cases
         String test = ""; //Initialising a String for saving the inputs
         String values [] = new String[3]; //Declaring an array for saving initial test values
@@ -26,14 +26,16 @@ public class River {
             m = Integer.parseInt(values[2]); //Parsing m input to integer
             for (int j = 0; j < m; j++) { //Loop for putting cars in a queue ordered depending on the arrival to terminal
                 arrival = Integer.parseInt(scan.nextLine()); //Reading and parsing each car inputed
-                cars.addLast(arrival); //Saving cars arriving in a queue
+                cars[i] = arrival; //Saving cars arriving in a queue
             }
             System.out.println(solution(n, t, m, cars)); //Printing the solution for a test case
-            cars.clear(); //Clearing the queue for next test
+            for (int j = 0; j < cars.length; j++) { //Loop for clearing the cars list (I can't clear with zero because it is a possible problem value
+                cars[i] = -1;
+            }
         }
     }
 
-    public static String solution(int n, int t, int m, LinkedList<Integer> cars) {
+    public static String solution(int n, int t, int m, int [] cars) {
         String sol = "";
         int totalTime = 0;
         int totalTrips = 0;
@@ -42,12 +44,12 @@ public class River {
         if (m % n != 0) { //I ceil because if my minimum trip quantity is non integer, I can't do decimal trips. I add one.
             minTrips++;
         }
-        for (int i = 0; i < minTrips; i++) { //Loop for going through the car list and... //TODO: completar esto
-            if (cars.size() == 0) {
+        for (int i = 0; i < minTrips; i++) { //Loop for going through the car list with the minimum of trips possible
+            if (cars.length == 0) {
                 totalTime = 0;
                 totalTrips = 0;
-            } else if (cars.size() == 1) {
-                totalTime = cars.getFirst() + t;
+            } else if (cars.length == 1) {
+                totalTime = cars[0] + t;
             } else {
                 //Criterio
             }
