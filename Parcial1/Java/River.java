@@ -1,11 +1,10 @@
-
 import java.util.Scanner;
 
 /**
  * This class solves the Ferry Loading II problem.
  * @author Simón Marín Giraldo
  */
-public class River {
+class River {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in); //Creating the scanner
         int cars [] = new int[1440]; //Creating an array which size will be maximum the limit of the problem
@@ -26,7 +25,7 @@ public class River {
             m = Integer.parseInt(values[2]); //Parsing m input to integer
             for (int j = 0; j < m; j++) { //Loop for putting cars in a queue ordered depending on the arrival to terminal
                 arrival = Integer.parseInt(scan.nextLine()); //Reading and parsing each car inputed
-                cars[i] = arrival; //Saving cars arriving in a queue
+                cars[j] = arrival; //Saving cars arriving in a queue
             }
             System.out.println(solution(n, t, m, cars)); //Printing the solution for a test case
             for (int j = 0; j < cars.length; j++) { //Loop for clearing the cars list (I can't clear with zero because it is a possible problem value
@@ -54,7 +53,6 @@ public class River {
             } else if (cars.length == 1) {
                 totalTime = cars[0] + t;
             } else if (m % n == 0) {
-                System.out.println("Gay");
                 index += n;
                 aux = cars[index];
                 if (totalTime > aux) {
@@ -63,15 +61,14 @@ public class River {
                     totalTime = aux + (2 * t);
                 }
             } else {
-                System.out.println("Holi");
                 firstTrip = m % n;
-                aux = cars[firstTrip];
+                aux = cars[firstTrip-1];
+                index = firstTrip-1;
                 totalTime = aux + (2 * t);
-                m -= m % n;
-                System.out.println("Valor de totalTime: " + totalTime + "\nValor de aux: " + aux + "\nValor de firstTrip: " + firstTrip);
+                m = m - m % n;
             }
         }
-        sol = totalTime + " " + totalTrips;
+        sol = totalTime-t + " " + totalTrips;
         return sol;
     }
 }
