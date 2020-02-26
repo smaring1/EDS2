@@ -37,21 +37,38 @@ public class River {
 
     public static String solution(int n, int t, int m, int [] cars) {
         String sol = "";
-        int totalTime = 0;
-        int totalTrips = 0;
         //Write solution here
         int minTrips = m/n; //It is the minimum quantity of trips you will do
         if (m % n != 0) { //I ceil because if my minimum trip quantity is non integer, I can't do decimal trips. I add one.
             minTrips++;
         }
+        int totalTime = 0;
+        int totalTrips = minTrips;
+        int index = -1;
+        int aux = 0;
+        int firstTrip = 0;
         for (int i = 0; i < minTrips; i++) { //Loop for going through the car list with the minimum of trips possible
             if (cars.length == 0) {
                 totalTime = 0;
                 totalTrips = 0;
             } else if (cars.length == 1) {
                 totalTime = cars[0] + t;
+            } else if (m % n == 0) {
+                System.out.println("Gay");
+                index += n;
+                aux = cars[index];
+                if (totalTime > aux) {
+                    totalTime += (2 * t);
+                } else {
+                    totalTime = aux + (2 * t);
+                }
             } else {
-                //Criterio
+                System.out.println("Holi");
+                firstTrip = m % n;
+                aux = cars[firstTrip];
+                totalTime = aux + (2 * t);
+                m -= m % n;
+                System.out.println("Valor de totalTime: " + totalTime + "\nValor de aux: " + aux + "\nValor de firstTrip: " + firstTrip);
             }
         }
         sol = totalTime + " " + totalTrips;
