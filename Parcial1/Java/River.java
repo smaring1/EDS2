@@ -41,34 +41,36 @@ class River {
         if (m % n != 0) { //I ceil because if my minimum trip quantity is non integer, I can't do decimal trips. I add one.
             minTrips++;
         }
-        int totalTime = 0;
-        int totalTrips = minTrips;
+        int totalTime = 0; //Initialising the total time that will be taken to do all the trips
+        int totalTrips = minTrips; //The optimal quantity of trips will be the same as the minimum trips and we try to force to do that quantity of trips
         int index = -1;
         int aux = 0;
         int firstTrip = 0;
         for (int i = 0; i < minTrips; i++) { //Loop for going through the car list with the minimum of trips possible
-            if (cars.length == 0) {
+            //Basic cases:
+            if (cars.length == 0) { //Case 1
                 totalTime = 0;
                 totalTrips = 0;
-            } else if (cars.length == 1) {
+            } else if (cars.length == 1) { //Case 2
                 totalTime = cars[0] + t;
-            } else if (m % n == 0) {
-                index += n;
-                aux = cars[index];
-                if (totalTime > aux) {
-                    totalTime += (2 * t);
-                } else {
-                    totalTime = aux + (2 * t);
+                //General solution
+            } else if (m % n == 0) { //If the ferry capacity divides the number of cars
+                index += n; //We add the capacity each time to the index
+                aux = cars[index]; //We assign the car in the index position to aux variable
+                if (totalTime > aux) { //While total time is higher than our time representing aux variable
+                    totalTime += (2 * t); //We will add one round trip to total time
+                } else { //If the previous condition doesn't happen anymore
+                    totalTime = aux + (2 * t); //We add round trips and the time corresponding to aux
                 }
-            } else {
-                firstTrip = m % n;
-                aux = cars[firstTrip-1];
-                index = firstTrip-1;
-                totalTime = aux + (2 * t);
-                m = m - m % n;
+            } else { //If the ferry capacity doesn't divide the number of cars
+                firstTrip = m % n; //I get the modulus between the number of cars and the capacity. I do this for determining the first trip
+                aux = cars[firstTrip-1]; //I assign the car time in the modulus position to aux variable
+                index = firstTrip-1; //I keep the index as the modulus minus one
+                totalTime = aux + (2 * t); //I get the car time in modulus minus one position and add a round trip to the counter
+                m -= (m % n); //I substract the initial modulus from the number of cars in every iteration
             }
         }
-        sol = totalTime-t + " " + totalTrips;
-        return sol;
+        sol = totalTime-t + " " + totalTrips; //Concatenation of the total time and total trips to give the format of the output
+        return sol; //Returns the final solution
     }
 }
