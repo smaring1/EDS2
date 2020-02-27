@@ -32,8 +32,13 @@ class BruteRiver {
 
     public static String solution(int n, int t, int m, int [] cars) {
         String sol = "";
-        //Write solution here
-        
+        int totalTime = 0;
+        int totalTrips = 0;
+        //Brute force solution here
+        for (int i = 1; i <= m; i++) {
+            
+        }
+        sol = totalTime + " " + totalTrips;
         return sol;
     }
 }

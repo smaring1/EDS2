@@ -36,7 +36,6 @@ class River {
 
     public static String solution(int n, int t, int m, int [] cars) {
         String sol = "";
-        //Write solution here
         int minTrips = m/n; //It is the minimum quantity of trips you will do
         if (m % n != 0) { //I ceil because if my minimum trip quantity is non integer, I can't do decimal trips. I add one.
             minTrips++;
