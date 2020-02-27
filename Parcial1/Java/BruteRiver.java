@@ -1,13 +1,19 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
 class BruteRiver {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in); //Creating the scanner
-        int cars [] = new int[1440]; //Creating an array which size will be maximum the limit of the problem
+        LinkedList<Integer> cars = new LinkedList<>();
+        //int cars [] = new int[1440]; //Creating an array which size will be maximum the limit of the problem
         int c = Integer.parseInt(scan.nextLine()); //Reading the first line containing the number of test cases
         String test = ""; //Initialising a String for saving the inputs
-        String values [] = new String[3]; //Declaring an array for saving initial test values
+        String[] values = new String[3]; //Declaring an array for saving initial test values
         int arrival = 0; //Initialising a variable for saving each car arrival
+        int index = 0;
+        int waiting = 1;
+        int arrivalTime = 0;
+        int trips = 0;
         int n = 0; //Initialising a variable for saving the ferry capacity
         int t = 0; //Initialising a variable for saving the time that the ferry takes to go from one side to another
         int m = 0; //Initialising a variable for the cars to be transported
@@ -21,24 +27,26 @@ class BruteRiver {
             m = Integer.parseInt(values[2]); //Parsing m input to integer
             for (int j = 0; j < m; j++) { //Loop for putting cars in a queue ordered depending on the arrival to terminal
                 arrival = Integer.parseInt(scan.nextLine()); //Reading and parsing each car inputed
-                cars[j] = arrival; //Saving cars arriving in a queue
+                cars.addLast(arrival);
             }
-            System.out.println(solution(n, t, m, cars)); //Printing the solution for a test case
-            for (int j = 0; j < cars.length; j++) { //Loop for clearing the cars list (I can't clear with zero because it is a possible problem value
-                cars[i] = -1;
-            }
+            System.out.println(solution(n, t, m, cars, index, waiting, arrivalTime, trips)); //Printing the solution for a test case
+            cars.clear();
         }
     }
 
-    public static String solution(int n, int t, int m, int [] cars) {
-        String sol = "";
-        int totalTime = 0;
-        int totalTrips = 0;
-        //Brute force solution here
-        for (int i = 1; i <= m; i++) {
-            
+    public static double solution(int n, int t, int m, LinkedList<Integer> cars, int index, int waiting, int arrivalTime, int trips) {
+        double sol1 = 0;
+        double sol2 = 0;
+        if (index < (m-1)) {
+            sol1 = solution(n, t, m, cars, index + 1, 1 + waiting - (Math.min(waiting, n)), (Math.max(arrivalTime, cars.get(index))) + (t * 2), trips + 1);
+            sol2 = solution(n, t, m, cars, index + 1, waiting + 1, arrivalTime, trips);
+            return Math.min(sol1, sol2);
+        } else {
+            if (waiting == 0) {
+                return Double.parseDouble((arrivalTime - t) + "." + trips);
+            } else {
+                return solution(n, t, m, cars, index, waiting - (Math.min(waiting, n)), (Math.max(arrivalTime, cars.get(index))) + (t * 2), trips + 1);
+            }
         }
-        sol = totalTime + " " + totalTrips;
-        return sol;
     }
 }
