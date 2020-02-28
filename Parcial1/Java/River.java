@@ -1,8 +1,11 @@
 import java.util.Scanner;
 
 /**
- * This class solves the Ferry Loading II problem.
+ * This class solves the Ferry Loading II problem
+ * using a Greedy Algorithm.
  * @author Simón Marín Giraldo
+ * Part of he solution was discussed with
+ * Julián Ramírez, Jesús Zapata and David Calle
  */
 class River {
     public static void main(String[] args) {
