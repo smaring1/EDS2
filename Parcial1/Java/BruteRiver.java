@@ -29,7 +29,7 @@ class BruteRiver {
                 arrival = Integer.parseInt(scan.nextLine()); //Reading and parsing each car inputed
                 cars.addLast(arrival);
             }
-            System.out.println(solution(n, t, m, cars, index, waiting, arrivalTime, trips)); //Printing the solution for a test case
+            System.out.println(formatting(solution(n, t, m, cars, index, waiting, arrivalTime, trips))); //Printing the solution for a test case
             cars.clear();
         }
     }
@@ -48,5 +48,10 @@ class BruteRiver {
                 return solution(n, t, m, cars, index, waiting - (Math.min(waiting, n)), (Math.max(arrivalTime, cars.get(index))) + (t * 2), trips + 1);
             }
         }
+    }
+
+    public static String formatting(double result) {
+        String input = result + "";
+        return input.replace(".", " ");
     }
 }
