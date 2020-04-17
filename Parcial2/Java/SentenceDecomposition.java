@@ -1,6 +1,8 @@
 public class SentenceDecomposition {
     public static void main(String[] args) {
-        System.out.println("Hola mundo");
+        String s = "abba";
+        String [] words = {"ab", "ac", "ad"};
+        System.out.println(decompose(s, words));
     }
 
     public static int decompose(String s, String [] words) {
