@@ -8,6 +8,7 @@ public class SentenceDecomposition {
     public static int decompose(String s, String [] words) {
         int sum = 0;
         //...
+        //Write you code here
         return sum;
     }
 }
