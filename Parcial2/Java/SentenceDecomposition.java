@@ -29,6 +29,7 @@ public class SentenceDecomposition {
         int sum = 0;
         String [] wordsSorted = new String[words.length];
         String aux = "";
+
         for (int i = 0; i < words.length; i++) {
             wordsSorted[i] = words[i];
             wordsSorted[i] = wordSort(wordsSorted[i]);
@@ -75,5 +76,18 @@ public class SentenceDecomposition {
             }
         }
         return cost;
+    }
+
+    /**
+     * This method determines
+     * whether two words are
+     * anagrams or not.
+     * @param first first word
+     * @param second second word
+     * @return true if they are anagrams
+     * else, false.
+     */
+    public static boolean areAnagrams(String first, String second) {
+        return (wordSort(first).equals(wordSort(second)));
     }
 }
