@@ -4,7 +4,7 @@ import java.util.LinkedList;
 /**
  * This class solves the Sentence
  * Decomposition problem from
- * topcoder which was used as
+ * TopCoder which was used as
  * Data Structures and Algorithms II
  * second exam.
  */
@@ -15,6 +15,15 @@ public class SentenceDecomposition {
         decompose(s, words);
     }
 
+    /**
+     * This method decomposes words
+     * and compares them with the String s
+     * as requested on the description
+     * of the problem in TopCoder.
+     * @param s
+     * @param words
+     * @return
+     */
     public static int decompose(String s, String [] words) {
         LinkedList<String> list = new LinkedList<>();
         int sum = 0;
