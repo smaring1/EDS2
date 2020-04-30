@@ -50,8 +50,8 @@ public class SentenceDecomposition {
         char [] divided = s.toCharArray();
         Arrays.sort(divided);
         String result = "";
-        for (int i = 0; i < divided.length; i++) {
-            result += divided[i];
+        for (char c : divided) {
+            result += c;
         }
         return result;
     }
