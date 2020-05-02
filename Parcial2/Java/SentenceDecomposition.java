@@ -31,8 +31,13 @@ public class SentenceDecomposition {
         }
         memorization[0] = 0; // Assigning 0 to the first position in the DP array as usually done in DP solutions
 
-        for (int i = 0; i < length; i++) if (memorization[i] < Integer.MAX_VALUE) {
-            for (String a: words) if (i + a.length() <= length && areAnagrams(a, s.substring(i, i + a.length()))) {
+        for (int i = 0; i < length; i++) if (memorization[i] < Integer.MAX_VALUE) { // Declaring a loop to go through the
+            // sentence for a general case. If this case doesn't happen, -1 will be returned.
+            for (String a: words) if (i + a.length() <= length && areAnagrams(a, s.substring(i, i + a.length()))) { // Declaring
+                // a loop to iterate through the words in the dictionary. The following instructions will only be done if
+                // the current word in the dictionary and the part being taken from the sentence are anagrams. Otherwise,
+                // the instructions inside this loop will be skipped and if in a further iteration, the condition is
+                // satisfied, this instructions will be executed.
                 memorization[i + a.length()] = Math.min(memorization[i + a.length()],
                         memorization[i] + cost(s.substring(i, i + a.length()), a));
             }
