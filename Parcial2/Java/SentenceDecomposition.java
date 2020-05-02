@@ -39,13 +39,20 @@ public class SentenceDecomposition {
                 // the instructions inside this loop will be skipped and if in a further iteration, the condition is
                 // satisfied, this instructions will be executed.
                 memorization[i + a.length()] = Math.min(memorization[i + a.length()],
-                        memorization[i] + cost(s.substring(i, i + a.length()), a));
+                        memorization[i] + cost(s.substring(i, i + a.length()), a)); // In this instruction we are
+                // assigning to the current word length + i, the minimum between two values. This is done to minimize
+                // the final transformation cost. We are assigning in that position the minimum value between
+                // the value in the position corresponding to the subsequence of the word being analyzed and
+                // the actual cost of transforming that subsequence into the actual word from the dictionary
+                // which is being analyzed.
             }
         }
-        if (memorization[length] == Integer.MAX_VALUE) {
+        if (memorization[length] == Integer.MAX_VALUE) { // If this happens, it means the general case wasn't satisfied
+            // In this case we just return -1 because no transformations can be done between two non anagram words.
             return -1;
         }
-        return memorization[length];
+        return memorization[length]; // This is reached when the general case happened. In the position corresponding
+        // to the length of the sentence, we finally have our answer.
     }
 
     /**
