@@ -25,7 +25,14 @@ public class SentenceDecomposition {
      * @return
      */
     public static int decompose(String s, String [] words) {
-        LinkedList<String> list = new LinkedList<>();
+        int length = s.length();
+        int [] memorization = new int[length + 1];
+
+        for (int i = 0; i < memorization.length; i++) {
+            memorization[i] = Integer.MAX_VALUE;
+        }
+        memorization[0] = 0;
+        
         int sum = 0;
         String [] wordsSorted = new String[words.length];
         String aux = "";
