@@ -6,6 +6,10 @@ import java.util.Arrays;
  * TopCoder which was used as
  * Data Structures and Algorithms II
  * second exam.
+ * The solution was based on a topcoder
+ * for the memorization. The cost, sort
+ * and anagrams functions were done by me.
+ * https://community.topcoder.com/stat?c=problem_solution&cr=22689544&rd=12183&pm=8692
  */
 public class SentenceDecomposition {
     public static void main(String[] args) {
